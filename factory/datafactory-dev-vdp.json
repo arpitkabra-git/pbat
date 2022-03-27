@@ -1,0 +1,9 @@
+{
+	"name": "datafactory-dev-vdp",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3ef3447e-5ddf-4d94-a838-1a7b215bf670",
+		"tenantId": "8b73c380-6220-4fd0-bbc3-144d3e430cbb"
+	}
+}
