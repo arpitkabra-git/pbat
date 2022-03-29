@@ -17,11 +17,7 @@
 				"name": "names",
 				"type": "varchar"
 			}
-		],
-		"typeProperties": {
-			"schema": "dbo",
-			"table": "empdelimited"
-		}
+		]
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
