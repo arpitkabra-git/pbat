@@ -7,7 +7,8 @@
 		},
 		"parameters": {
 			"currentfilename": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "empDelimited.txt"
 			}
 		},
 		"annotations": [],
@@ -28,7 +29,11 @@
 		},
 		"schema": [
 			{
-				"name": "id;Names",
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "Names",
 				"type": "String"
 			}
 		]
