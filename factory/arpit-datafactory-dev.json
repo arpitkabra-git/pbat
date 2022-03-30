@@ -1,0 +1,9 @@
+{
+	"name": "arpit-datafactory-dev",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7aa21c40-0249-4e15-8b1b-a0c75cf206ea",
+		"tenantId": "f017ded0-4972-4830-bc4c-e73550ac84c1"
+	}
+}

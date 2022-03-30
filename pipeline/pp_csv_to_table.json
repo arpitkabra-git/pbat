@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_csv_to_table",
+				"name": "copy_csv_to_table",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -49,12 +49,12 @@
 							},
 							{
 								"source": {
-									"name": "Names",
+									"name": "name",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "names",
+									"name": "name",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -69,36 +69,20 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_empdelimitext",
+						"referenceName": "ds_empdelimited",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_sql_empdelimted",
+						"referenceName": "ds_sqlserver_empdelimited",
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "Wait1",
-				"type": "Wait",
-				"dependsOn": [
-					{
-						"activity": "Copy_csv_to_table",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"waitTimeInSeconds": 1
-				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2022-03-26T02:44:18Z"
+		"lastPublishTime": "2022-03-26T16:02:17Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
