@@ -51,11 +51,11 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Set variable1",
+							"name": "Set variable Lastmodifed",
 							"type": "SetVariable",
 							"dependsOn": [
 								{
-									"activity": "Get Metadata1",
+									"activity": "If Condition1",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -63,15 +63,15 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "var_filename",
+								"variableName": "var_oldmodifieddate",
 								"value": {
-									"value": "@item().name",
+									"value": "@activity('Get Metadata Last Modifed').output.lastModified",
 									"type": "Expression"
 								}
 							}
 						},
 						{
-							"name": "Get Metadata1",
+							"name": "Get Metadata Last Modifed",
 							"type": "GetMetadata",
 							"dependsOn": [],
 							"policy": {
@@ -105,6 +105,40 @@
 									"type": "DelimitedTextReadSettings"
 								}
 							}
+						},
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Get Metadata Last Modifed",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@greater(activity('Get Metadata Last Modifed').output.lastModified,variables('var_oldmodifieddate') )",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Set variable Filename",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "var_filename",
+											"value": {
+												"value": "@activity('Get Metadata Last Modifed').output.itemName",
+												"type": "Expression"
+											}
+										}
+									}
+								]
+							}
 						}
 					]
 				}
@@ -113,6 +147,10 @@
 		"variables": {
 			"var_filename": {
 				"type": "String"
+			},
+			"var_oldmodifieddate": {
+				"type": "String",
+				"defaultValue": "2020-03-26T02:15:27Z"
 			}
 		},
 		"annotations": []
