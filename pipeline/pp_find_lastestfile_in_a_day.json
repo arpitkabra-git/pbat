@@ -51,7 +51,27 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Get Metadata LastModifeddate",
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Get Metadata1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "var_filename",
+								"value": {
+									"value": "@item().name",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Get Metadata1",
 							"type": "GetMetadata",
 							"dependsOn": [],
 							"policy": {
@@ -74,8 +94,8 @@
 									}
 								},
 								"fieldList": [
-									"childItems",
-									"lastModified"
+									"lastModified",
+									"itemName"
 								],
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
@@ -90,6 +110,11 @@
 				}
 			}
 		],
+		"variables": {
+			"var_filename": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
