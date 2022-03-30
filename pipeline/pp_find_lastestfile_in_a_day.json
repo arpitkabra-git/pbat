@@ -68,7 +68,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"currentfilename": {
-											"value": "@item()",
+											"value": "@item().name.output",
 											"type": "Expression"
 										}
 									}
